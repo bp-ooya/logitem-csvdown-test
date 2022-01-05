@@ -6,7 +6,7 @@ miro.onReady(() => {
   miro.initialize({
     extensionPoints: {
 //      bottomBar: {
-//        title: 'ï½¶ï½°ï¾„ï¾ä¸€æ‹¬ç™»éŒ²',
+//        title: '¶°ÄŞˆêŠ‡“o˜^',
 //        svgIcon: iconCardBatch, 
 //        positionPriority: 1,
 //        onClick: async () => {
@@ -14,13 +14,13 @@ miro.onReady(() => {
 //        }
 //      },  
       toolbar: {
-        title: 'CSVï¾€ï¾ï½³ï¾ï¾›ï½°ï¾„ï¾',
+        title: 'CSVÀŞ³İÛ°ÄŞ',
         toolbarSvgIcon: iconExportCsv, 
         librarySvgIcon: iconExportCsv, 
         positionPriority: 2,
         onClick: async () => {
 
-          const client_id = '3074457361560843499';        // MetaDataèª­ã¿è¾¼ã¿ç”¨
+          const client_id = '3074457361560843499';        // MetaData“Ç‚İ‚İ—p
 
           const frameclass = class{
             constructor(name, x1, x2, y1, y2){
@@ -35,13 +35,13 @@ miro.onReady(() => {
 
           var frames = [];
         
-          // å…¨ã‚¨ãƒªã‚¢Frameã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å–å¾—
+          // ‘SƒGƒŠƒAFrameƒIƒuƒWƒFƒNƒg‚Ìæ“¾
           let allFrames = await miro.board.widgets.get({type: 'Frame'});
           
-//          // å…¨Stickerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å–å¾—(ã‚¨ãƒªã‚¢ä¸Šã«é…ç½®ã•ã‚Œã¦ã„ã‚‹å‚™è€ƒ)
+//          // ‘SStickerƒIƒuƒWƒFƒNƒg‚Ìæ“¾(ƒGƒŠƒAã‚É”z’u‚³‚ê‚Ä‚¢‚é”õl)
 //          let allStickers = await miro.board.widgets.get({type: 'Sticker'});
 
-          // ã‚¯ãƒ©ã‚¹é…åˆ—ã«è¿½åŠ 
+          // ƒNƒ‰ƒX”z—ñ‚É’Ç‰Á
           allFrames.forEach(frame => {
           
 			var x1 = frame.bounds.x - frame.bounds.width/2;
@@ -50,7 +50,7 @@ miro.onReady(() => {
 			var y2 = frame.bounds.y + frame.bounds.height/2;
           
           	var comment = "";
-//          	// Frameå†…ã«å‚™è€ƒStickerãŒå­˜åœ¨ã™ã‚‹ã‹ç¢ºèª
+//          	// Frame“à‚É”õlSticker‚ª‘¶İ‚·‚é‚©Šm”F
 //          	allStickers.forEach(sticker => {
 //                if(sticker.x >= x1 && sticker.x <= x2 && sticker.y >= y1 && sticker.y <= y2){
 //                	comment = sticker.plainText;
@@ -60,12 +60,12 @@ miro.onReady(() => {
             frames.push(new frameclass(frame.title, x1, x2, y1, y2));
           });
 
-          frames = frames.filter(frame=> frame.name.indexOf('å‡ºå‹¤è€…') === -1);
+          frames = frames.filter(frame=> frame.name.indexOf('o‹ÎÒ') === -1);
 
-          // å…¨ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å–å¾—
+          // ‘SƒCƒ[ƒWƒIƒuƒWƒFƒNƒg‚Ìæ“¾
           let allCards = await miro.board.widgets.get({type: 'IMAGE'});
 
-          //ãƒ•ã‚¡ã‚¤ãƒ«å(Out_yyyymmdd.csv)
+          //ƒtƒ@ƒCƒ‹–¼(Out_yyyymmdd.csv)
           var d = new Date();
           var formatted = d.getFullYear() + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + (d.getDate())).slice(-2) + "_" + ('0' + (d.getHours())).slice(-2)  + ('0' + (d.getMinutes())).slice(-2)  + ('0' + (d.getSeconds())).slice(-2) ;
           const fileName = "Out_" + formatted + '.csv';
@@ -80,7 +80,7 @@ miro.onReady(() => {
 
             if(([client_id] in fromjson) && ('staffid' in fromjson[client_id])){
               var staffid = fromjson[client_id]['staffid'];
-              // ã‚«ãƒ¼ãƒ‰ãŒã‚¨ãƒªã‚¢Frameã®ç¯„å›²å†…ã«å…¥ã£ã¦ã„ãŸã‚‰å‡ºåŠ›ã™ã‚‹
+              // ƒJ[ƒh‚ªƒGƒŠƒAFrame‚Ì”ÍˆÍ“à‚É“ü‚Á‚Ä‚¢‚½‚ço—Í‚·‚é
               for(let i=0; i< frames.length; i++){
               	var frame = frames[i];
                 if(card.x >= frame.x1 && card.x <= frame.x2 && card.y >= frame.y1 && card.y <= frame.y2){
@@ -93,8 +93,8 @@ miro.onReady(() => {
 
           });
           
-          // å‘¨çŸ¥äº‹é …Frameå†…ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
-		  let notificationfrs = allFrames.filter(frame=> frame.title.indexOf('å‘¨çŸ¥äº‹é …') != -1);
+          // ü’m–€Frame“à‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾
+		  let notificationfrs = allFrames.filter(frame=> frame.title.indexOf('ü’m–€') != -1);
             		  
   		  for(var i=0; i<notificationfrs.length; i++){
   		  	
@@ -109,12 +109,12 @@ miro.onReady(() => {
 						strCsv = strCsv + "," + widgettext;
 					}
 				}
-				// CSVå‡ºåŠ›
+				// CSVo—Í
 				csvData += strCsv + "\n";
 		 }
   		 
 
-          // CSVãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
+          // CSVƒ_ƒEƒ“ƒ[ƒh
           const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
           const blob = new Blob([bom, csvData], { type: "text/csv" });
           const url = (window.URL || window.webkitURL).createObjectURL(blob);
@@ -122,11 +122,11 @@ miro.onReady(() => {
           download.href = url;
           download.download = fileName;
           download.click();
-          //createObjectURLã§ä½œæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆURLã‚’é–‹æ”¾ã™ã‚‹
+          //createObjectURL‚Åì¬‚µ‚½ƒIƒuƒWƒFƒNƒgURL‚ğŠJ•ú‚·‚é
           (window.URL || window.webkitURL).revokeObjectURL(url);
 
 	        // Show success message
-	         miro.showNotification('ExportãŒæ­£å¸¸ã«å®Œäº†ã—ã¾ã—ãŸã€‚')  
+	         miro.showNotification('Export‚ª³í‚ÉŠ®—¹‚µ‚Ü‚µ‚½B')  
 			
 		  }
 
