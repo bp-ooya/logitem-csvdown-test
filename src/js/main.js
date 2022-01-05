@@ -111,7 +111,7 @@ miro.onReady(() => {
 				}
 				// CSV出力
 				csvData += strCsv + "\n";
-       　 }
+		 }
   		 
 
           // CSVダウンロード
